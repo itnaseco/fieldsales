@@ -9,7 +9,7 @@ def search(territory, term):
 	if len(term) < 2:
 		return []
 	return frappe.get_list(
-		"Customer", filters={"territory": territory, "disabled": 0},
+		"Customer", filters=_customer_filters(territory),
 		or_filters={"name": ["like", f"%{term}%"], "customer_name": ["like", f"%{term}%"]},
 		fields=["name", "customer_name"], order_by="customer_name asc, name asc", limit=25,
 	)
@@ -33,10 +33,17 @@ def outlets(territory, customer):
 
 def check_customer(territory, customer):
 	if not frappe.has_permission("Customer", "read") or not frappe.get_list(
-		"Customer", filters={"name": customer, "territory": territory, "disabled": 0},
+		"Customer", filters={"name": customer, **_customer_filters(territory)},
 		pluck="name", limit=1,
 	):
 		frappe.throw(_("This customer is unavailable in your Field Sales scope."), frappe.PermissionError)
+
+
+def _customer_filters(territory):
+	filters = {"disabled": 0}
+	if territory is not None:
+		filters["territory"] = territory
+	return filters
 
 
 def check_outlet(customer, address):

@@ -5,6 +5,8 @@ from frappe import _
 OFFICER = "Field Sales Officer"
 REVIEWER = "Field Sales Reviewer"
 QUALITY_REVIEWER = "Field Sales Quality Reviewer"
+ASSIGNED = "assigned"
+PILOT = "pilot"
 REVIEW_ROLES = {
 	"Field Sales Customer Intake": REVIEWER,
 	"Field Sales Visit": REVIEWER,
@@ -59,10 +61,35 @@ def require_officer():
 	user = frappe.session.user
 	if OFFICER not in frappe.get_roles(user):
 		frappe.throw(_("Field Sales Officer access is required."), frappe.PermissionError)
+	config = frappe.conf.get("fieldsales_pilot_scope")
+	if config is not None:
+		scope = _pilot_scope()
+		if not scope:
+			frappe.throw(_("Field Sales pilot scope is invalid."), frappe.PermissionError)
+		if not frappe.db.get_value("User", user, "enabled"):
+			frappe.throw(_("Field Sales Officer access is required."), frappe.PermissionError)
+		return scope, PILOT
 	assignment = get_assignment(user)
 	if not assignment:
 		frappe.throw(_("Ask your administrator for one Field Sales Company and Territory User Permission."), frappe.PermissionError)
-	return assignment
+	return assignment, ASSIGNED
+
+
+def review_customer_territory(doc):
+	pilot_scope = _pilot_scope()
+	return None if pilot_scope and _in_scope(doc, pilot_scope) else doc.territory
+
+
+def _pilot_scope():
+	config = frappe.conf.get("fieldsales_pilot_scope")
+	if not isinstance(config, dict):
+		return None
+	company, territory = config.get("company"), config.get("territory")
+	if not all(isinstance(value, str) and value.strip() for value in (company, territory)):
+		return None
+	if frappe.db.exists("Company", company) and frappe.db.exists("Territory", territory):
+		return frappe._dict(company=company, territory=territory)
+	return None
 
 
 def record_permission(doc, user=None, ptype=None):

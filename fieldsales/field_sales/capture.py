@@ -23,7 +23,7 @@ TEXT_FIELDS = {
 LINK_FIELDS = {"customer", "outlet", "customer_intake"}
 
 
-def save(assignment, kind, external_id, mutation_id, payload):
+def save(assignment, kind, external_id, mutation_id, payload, *, customer_territory):
 	doctype = _doctype(kind)
 	external_id = _uuid(external_id)
 	mutation_id = _uuid(mutation_id)
@@ -50,7 +50,7 @@ def save(assignment, kind, external_id, mutation_id, payload):
 
 	try:
 		if doctype in (VISIT, COMPLAINT):
-			_check_source(assignment, doctype, data)
+			_check_source(assignment, doctype, data, customer_territory)
 		frappe.get_doc({
 			"doctype": doctype, "external_id": external_id, **assignment, **data,
 		}).insert(ignore_permissions=True)
@@ -109,7 +109,7 @@ def _validate(doctype, payload):
 	return values
 
 
-def _check_source(assignment, doctype, values):
+def _check_source(assignment, doctype, values, customer_territory):
 	customer, outlet, intake = (values[key] for key in ("customer", "outlet", "customer_intake"))
 	if intake:
 		if customer or outlet:
@@ -118,7 +118,7 @@ def _check_source(assignment, doctype, values):
 		if not status or status == "Rejected":
 			frappe.throw(_("This intake is outside your assignment."), frappe.PermissionError)
 	elif customer:
-		check_customer(assignment.territory, customer)
+		check_customer(customer_territory, customer)
 		if outlet:
 			check_outlet(customer, outlet)
 		elif doctype == VISIT:

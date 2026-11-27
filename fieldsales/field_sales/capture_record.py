@@ -2,6 +2,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 
+from fieldsales.field_sales.access import review_customer_territory
 from fieldsales.field_sales.customers import check_customer, check_outlet
 
 
@@ -18,7 +19,7 @@ class CaptureRecord(Document):
 		if self.doctype == "Field Sales Customer Intake" and self.review_status == "Linked":
 			if not self.linked_customer or not self.linked_address:
 				frappe.throw(_("Select both the existing Customer and its outlet Address."))
-			check_customer(self.territory, self.linked_customer)
+			check_customer(review_customer_territory(self), self.linked_customer)
 			check_outlet(self.linked_customer, self.linked_address)
 		if self.doctype == "Field Sales Complaint" and self.support_issue != previous.support_issue:
 			self._check_support_issue()
@@ -31,4 +32,4 @@ class CaptureRecord(Document):
 		if issue.company != self.company or (self.customer and issue.customer != self.customer):
 			frappe.throw(_("Choose a Support Issue for this company and customer."), frappe.PermissionError)
 		if issue.customer:
-			check_customer(self.territory, issue.customer)
+			check_customer(review_customer_territory(self), issue.customer)
