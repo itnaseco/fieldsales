@@ -286,12 +286,14 @@ fixtures = [
 ]
 
 permission_query_conditions = {
+	"Field Sales Report": "fieldsales.field_sales.report_access.report_query",
 	"Field Sales Customer Intake": "fieldsales.field_sales.access.intake_query",
 	"Field Sales Visit": "fieldsales.field_sales.access.visit_query",
 	"Field Sales Complaint": "fieldsales.field_sales.access.complaint_query",
 }
 
 has_permission = {
+	"Field Sales Report": "fieldsales.field_sales.report_access.report_permission",
 	"Field Sales Customer Intake": "fieldsales.field_sales.access.record_permission",
 	"Field Sales Visit": "fieldsales.field_sales.access.record_permission",
 	"Field Sales Complaint": "fieldsales.field_sales.access.record_permission",

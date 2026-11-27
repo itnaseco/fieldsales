@@ -17,6 +17,15 @@
   },
   {
    "role": "System Manager"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Delivery Manager"
+  },
+  {
+   "role": "Stock Manager"
   }
  ],
  "shortcuts": [
@@ -31,7 +40,13 @@
    "link_to": "Field Sales Visit",
    "type": "DocType",
    "doc_view": "List"
+  },
+  {
+   "label": "Field Reports",
+   "link_to": "Field Sales Report",
+   "type": "DocType",
+   "doc_view": "List"
   }
  ],
- "content": "[{\"id\":\"fieldsales_operations-1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Intake\",\"col\":4}},{\"id\":\"fieldsales_operations-2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Visits\",\"col\":4}}]"
+ "content": "[{\"id\":\"fieldsales_operations-1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Intake\",\"col\":4}},{\"id\":\"fieldsales_operations-2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Visits\",\"col\":4}},{\"id\":\"fieldsales_operations-3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Field Reports\",\"col\":4}}]"
 }

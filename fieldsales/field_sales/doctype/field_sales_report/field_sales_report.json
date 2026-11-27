@@ -1,0 +1,301 @@
+{
+ "doctype": "DocType",
+ "name": "Field Sales Report",
+ "module": "Field Sales",
+ "engine": "InnoDB",
+ "autoname": "field:external_id",
+ "title_field": "subject",
+ "track_changes": 1,
+ "field_order": [
+  "external_id",
+  "report_type",
+  "subject",
+  "activity_date",
+  "company",
+  "territory",
+  "customer",
+  "outlet",
+  "sales_order",
+  "delivery_note",
+  "warehouse",
+  "item",
+  "batch",
+  "uom",
+  "quantity",
+  "amount",
+  "currency",
+  "reference",
+  "payment_method",
+  "fulfillment_route",
+  "event_type",
+  "location",
+  "contact_name",
+  "plot_label",
+  "related_report",
+  "milestone",
+  "notes",
+  "attachment",
+  "review_status",
+  "review_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "label": "Submission ID",
+   "reqd": 1,
+   "unique": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "report_type",
+   "fieldtype": "Select",
+   "label": "Report type",
+   "reqd": 1,
+   "options": "Bank Payment Evidence\nCollection\nDelivery Proof\nReturn or Discrepancy\nStock Handover\nStock Count\nEvent Participation\nDemo Farm\nDemo Observation"
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "activity_date",
+   "fieldtype": "Date",
+   "label": "Activity date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "territory",
+   "fieldtype": "Link",
+   "label": "Territory",
+   "options": "Territory",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "outlet",
+   "fieldtype": "Link",
+   "label": "Outlet",
+   "options": "Address"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "delivery_note",
+   "fieldtype": "Link",
+   "label": "Delivery note",
+   "options": "Delivery Note"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "label": "Seed item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "label": "Batch",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "Unit",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Float",
+   "label": "Quantity"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "options": "currency"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "reference",
+   "fieldtype": "Data",
+   "label": "Reference"
+  },
+  {
+   "fieldname": "payment_method",
+   "fieldtype": "Select",
+   "label": "Payment method",
+   "options": "Cash\nMobile Money\nOther"
+  },
+  {
+   "fieldname": "fulfillment_route",
+   "fieldtype": "Select",
+   "label": "Fulfillment route",
+   "options": "Officer Stock\nRegional Hub Pickup\nDirect from Head Office"
+  },
+  {
+   "fieldname": "event_type",
+   "fieldtype": "Select",
+   "label": "Event type",
+   "options": "Trade Show\nField Day\nDealer Event\nOther"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "contact_name",
+   "fieldtype": "Data",
+   "label": "Contact"
+  },
+  {
+   "fieldname": "plot_label",
+   "fieldtype": "Data",
+   "label": "Plot label"
+  },
+  {
+   "fieldname": "related_report",
+   "fieldtype": "Link",
+   "label": "Related report",
+   "options": "Field Sales Report"
+  },
+  {
+   "fieldname": "milestone",
+   "fieldtype": "Select",
+   "label": "Milestone",
+   "options": "Planting\nEstablishment\nMonitoring\nField Day\nClosure"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach Image",
+   "label": "Private evidence",
+   "read_only": 1
+  },
+  {
+   "fieldname": "review_status",
+   "fieldtype": "Select",
+   "label": "Review status",
+   "options": "Pending Review\nIn Review\nAccepted\nRejected",
+   "default": "Pending Review",
+   "permlevel": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "review_notes",
+   "fieldtype": "Small Text",
+   "label": "Review notes",
+   "permlevel": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "Field Sales Officer",
+   "read": 1,
+   "create": 1,
+   "if_owner": 1
+  },
+  {
+   "role": "Field Sales Officer",
+   "permlevel": 1,
+   "read": 1,
+   "if_owner": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "delete": 1
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "Field Sales Reviewer",
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "Field Sales Reviewer",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "Accounts Manager",
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "Accounts Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "Stock Manager",
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "Stock Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "Delivery Manager",
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "Delivery Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

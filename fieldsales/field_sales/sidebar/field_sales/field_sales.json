@@ -52,6 +52,15 @@
    "is_default_module": 1
   },
   {
+   "type": "Link",
+   "label": "Field Reports",
+   "link_type": "DocType",
+   "link_to": "Field Sales Report",
+   "icon": "list",
+   "child": 1,
+   "is_default_module": 1
+  },
+  {
    "type": "Section Break",
    "label": "Quality",
    "icon": "quality",

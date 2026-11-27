@@ -50,10 +50,12 @@ def get_assignment(user):
 
 
 def has_app_access():
+	from fieldsales.field_sales.report_access import REVIEW_TYPES
+
 	user = frappe.session.user
 	roles = set(frappe.get_roles(user))
 	return "System Manager" in roles or (
-		bool(roles & {OFFICER, REVIEWER, QUALITY_REVIEWER}) and bool(get_assignment(user))
+		bool(roles & {OFFICER, QUALITY_REVIEWER, *REVIEW_TYPES}) and bool(get_assignment(user))
 	)
 
 
