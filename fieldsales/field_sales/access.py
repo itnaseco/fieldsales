@@ -47,6 +47,14 @@ def get_assignment(user):
 	return None
 
 
+def has_app_access():
+	user = frappe.session.user
+	roles = set(frappe.get_roles(user))
+	return "System Manager" in roles or (
+		bool(roles & {OFFICER, REVIEWER, QUALITY_REVIEWER}) and bool(get_assignment(user))
+	)
+
+
 def require_officer():
 	user = frappe.session.user
 	if OFFICER not in frappe.get_roles(user):

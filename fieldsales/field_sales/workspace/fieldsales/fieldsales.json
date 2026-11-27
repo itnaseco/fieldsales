@@ -1,0 +1,46 @@
+{
+ "doctype": "Workspace",
+ "name": "FieldSales",
+ "label": "FieldSales",
+ "title": "FieldSales",
+ "module": "Field Sales",
+ "app": "fieldsales",
+ "public": 1,
+ "standard": 1,
+ "type": "Workspace",
+ "roles": [
+  {
+   "role": "Field Sales Officer"
+  },
+  {
+   "role": "Field Sales Reviewer"
+  },
+  {
+   "role": "Field Sales Quality Reviewer"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "shortcuts": [
+  {
+   "label": "Customer Intake",
+   "link_to": "Field Sales Customer Intake",
+   "type": "DocType",
+   "doc_view": "List"
+  },
+  {
+   "label": "Visits",
+   "link_to": "Field Sales Visit",
+   "type": "DocType",
+   "doc_view": "List"
+  },
+  {
+   "label": "Complaints",
+   "link_to": "Field Sales Complaint",
+   "type": "DocType",
+   "doc_view": "List"
+  }
+ ],
+ "content": "[{\"id\":\"fieldsales-1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Intake\",\"col\":4}},{\"id\":\"fieldsales-2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Visits\",\"col\":4}},{\"id\":\"fieldsales-3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Complaints\",\"col\":4}}]"
+}

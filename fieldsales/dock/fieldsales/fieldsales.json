@@ -1,0 +1,17 @@
+{
+ "doctype": "Dock",
+ "app": "fieldsales",
+ "name": "fieldsales",
+ "standard": 1,
+ "user": "",
+ "items": [
+  {
+   "link_type": "Sidebar",
+   "link_to": "Field Sales",
+   "title": "Field Sales",
+   "icon": "leaf",
+   "hidden": 0,
+   "added": 0
+  }
+ ]
+}

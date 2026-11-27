@@ -1,0 +1,37 @@
+{
+ "doctype": "Workspace",
+ "name": "FieldSales Operations",
+ "label": "FieldSales Operations",
+ "title": "FieldSales Operations",
+ "module": "Field Sales",
+ "app": "fieldsales",
+ "public": 1,
+ "standard": 1,
+ "type": "Workspace",
+ "roles": [
+  {
+   "role": "Field Sales Officer"
+  },
+  {
+   "role": "Field Sales Reviewer"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "shortcuts": [
+  {
+   "label": "Customer Intake",
+   "link_to": "Field Sales Customer Intake",
+   "type": "DocType",
+   "doc_view": "List"
+  },
+  {
+   "label": "Visits",
+   "link_to": "Field Sales Visit",
+   "type": "DocType",
+   "doc_view": "List"
+  }
+ ],
+ "content": "[{\"id\":\"fieldsales_operations-1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Intake\",\"col\":4}},{\"id\":\"fieldsales_operations-2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Visits\",\"col\":4}}]"
+}

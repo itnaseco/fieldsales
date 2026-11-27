@@ -1,0 +1,116 @@
+{
+ "doctype": "Sidebar",
+ "name": "Field Sales",
+ "title": "Field Sales",
+ "module": "Field Sales",
+ "app": "fieldsales",
+ "header_icon": "leaf",
+ "standard": 1,
+ "items": [
+  {
+   "type": "Link",
+   "label": "Overview",
+   "link_type": "Workspace",
+   "link_to": "FieldSales",
+   "icon": "home",
+   "child": 0,
+   "is_default_module": 1
+  },
+  {
+   "type": "Section Break",
+   "label": "Field Work",
+   "icon": "map",
+   "collapsible": 1,
+   "indent": 1,
+   "keep_closed": 0
+  },
+  {
+   "type": "Link",
+   "label": "Operations",
+   "link_type": "Workspace",
+   "link_to": "FieldSales Operations",
+   "icon": "map",
+   "child": 1,
+   "is_default_module": 0
+  },
+  {
+   "type": "Link",
+   "label": "Customer Intake",
+   "link_type": "DocType",
+   "link_to": "Field Sales Customer Intake",
+   "icon": "list",
+   "child": 1,
+   "is_default_module": 1
+  },
+  {
+   "type": "Link",
+   "label": "Visits",
+   "link_type": "DocType",
+   "link_to": "Field Sales Visit",
+   "icon": "list",
+   "child": 1,
+   "is_default_module": 1
+  },
+  {
+   "type": "Section Break",
+   "label": "Quality",
+   "icon": "quality",
+   "collapsible": 1,
+   "indent": 1,
+   "keep_closed": 0
+  },
+  {
+   "type": "Link",
+   "label": "Quality Review",
+   "link_type": "Workspace",
+   "link_to": "FieldSales Quality",
+   "icon": "quality",
+   "child": 1,
+   "is_default_module": 0
+  },
+  {
+   "type": "Link",
+   "label": "Complaints",
+   "link_type": "DocType",
+   "link_to": "Field Sales Complaint",
+   "icon": "list",
+   "child": 1,
+   "is_default_module": 1
+  },
+  {
+   "type": "Section Break",
+   "label": "Administration",
+   "icon": "settings",
+   "collapsible": 1,
+   "indent": 1,
+   "keep_closed": 1
+  },
+  {
+   "type": "Link",
+   "label": "Setup",
+   "link_type": "Workspace",
+   "link_to": "FieldSales Setup",
+   "icon": "settings",
+   "child": 1,
+   "is_default_module": 0
+  },
+  {
+   "type": "Link",
+   "label": "User Permissions",
+   "link_type": "DocType",
+   "link_to": "User Permission",
+   "icon": "list",
+   "child": 1,
+   "is_default_module": 0
+  },
+  {
+   "type": "Link",
+   "label": "Sync Receipts",
+   "link_type": "DocType",
+   "link_to": "Field Sales Sync Receipt",
+   "icon": "list",
+   "child": 1,
+   "is_default_module": 1
+  }
+ ]
+}

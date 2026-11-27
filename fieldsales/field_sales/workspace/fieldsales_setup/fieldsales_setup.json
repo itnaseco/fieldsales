@@ -1,0 +1,31 @@
+{
+ "doctype": "Workspace",
+ "name": "FieldSales Setup",
+ "label": "FieldSales Setup",
+ "title": "FieldSales Setup",
+ "module": "Field Sales",
+ "app": "fieldsales",
+ "public": 1,
+ "standard": 1,
+ "type": "Workspace",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "shortcuts": [
+  {
+   "label": "User Permissions",
+   "link_to": "User Permission",
+   "type": "DocType",
+   "doc_view": "List"
+  },
+  {
+   "label": "Sync Receipts",
+   "link_to": "Field Sales Sync Receipt",
+   "type": "DocType",
+   "doc_view": "List"
+  }
+ ],
+ "content": "[{\"id\":\"fieldsales_setup-1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User Permissions\",\"col\":4}},{\"id\":\"fieldsales_setup-2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sync Receipts\",\"col\":4}}]"
+}

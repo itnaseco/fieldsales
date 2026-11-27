@@ -1,0 +1,37 @@
+{
+ "doctype": "Workspace",
+ "name": "FieldSales Quality",
+ "label": "FieldSales Quality",
+ "title": "FieldSales Quality",
+ "module": "Field Sales",
+ "app": "fieldsales",
+ "public": 1,
+ "standard": 1,
+ "type": "Workspace",
+ "roles": [
+  {
+   "role": "Field Sales Officer"
+  },
+  {
+   "role": "Field Sales Quality Reviewer"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "shortcuts": [
+  {
+   "label": "Complaints",
+   "link_to": "Field Sales Complaint",
+   "type": "DocType",
+   "doc_view": "List"
+  },
+  {
+   "label": "Support Issues",
+   "link_to": "Issue",
+   "type": "DocType",
+   "doc_view": "List"
+  }
+ ],
+ "content": "[{\"id\":\"fieldsales_quality-1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Complaints\",\"col\":4}},{\"id\":\"fieldsales_quality-2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Support Issues\",\"col\":4}}]"
+}

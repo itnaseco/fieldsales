@@ -4,22 +4,23 @@ app_publisher = "Naseco"
 app_description = "Offline-first field sales client and Frappe backend for NASECO."
 app_email = "admin@naseco.com"
 app_license = "mit"
+app_logo_url = "/assets/fieldsales/images/fieldsales-desk.png"
+app_home = "/desk/fieldsales"
 
 # Apps
 # ------------------
 
 # required_apps = []
 
-# Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "fieldsales",
-# 		"logo": "/assets/fieldsales/logo.png",
-# 		"title": "Field Sales",
-# 		"route": "/fieldsales",
-# 		"has_permission": "fieldsales.api.permission.has_app_permission",
-# 	}
-# ]
+add_to_apps_screen = [
+	{
+		"name": app_name,
+		"logo": app_logo_url,
+		"title": app_title,
+		"route": app_home,
+		"has_permission": "fieldsales.field_sales.access.has_app_access",
+	}
+]
 
 # The dock, the rail down the left of the desk, is a document rather than a hook. Author it in
 # Manage Dock on a developer-mode site and press Export to App, and it is written to
