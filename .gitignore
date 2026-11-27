@@ -53,3 +53,29 @@ jspm_packages/
 
 # Aider AI Chat
 .aider*
+
+# Local architecture, design and diagram materials
+[Aa][Rr][Cc][Hh][Ii][Tt][Ee][Cc][Tt][Uu][Rr][Ee]/
+[Dd][Ee][Ss][Ii][Gg][Nn]/
+[Oo][Pp][Ee][Nn][Ss][Pp][Ee][Cc]/
+*[Aa][Rr][Cc][Hh][Ii][Tt][Ee][Cc][Tt][Uu][Rr][Ee]*.[Mm][Dd]
+*[Aa][Rr][Cc][Hh][Ii][Tt][Ee][Cc][Tt][Uu][Rr][Ee]*.[Pp][Dd][Ff]
+*[Aa][Rr][Cc][Hh][Ii][Tt][Ee][Cc][Tt][Uu][Rr][Ee]*.[Dd][Oo][Cc]*
+*[Dd][Ee][Ss][Ii][Gg][Nn]*.[Mm][Dd]
+*[Dd][Ee][Ss][Ii][Gg][Nn]*.[Pp][Dd][Ff]
+*[Dd][Ee][Ss][Ii][Gg][Nn]*.[Dd][Oo][Cc]*
+*.[Mm][Mm][Dd]
+*.[Dd][Rr][Aa][Ww][Ii][Oo]
+*.[Bb][Pp][Mm][Nn]
+*.[Dd][Mm][Nn]
+
+# Local agent skills and notes
+.agents/
+.claude/
+.codex/
+.cursor/
+[Ss][Kk][Ii][Ll][Ll][Ss]/
+[Ss][Kk][Ii][Ll][Ll][Ss]-[Ll][Oo][Cc][Kk].[Jj][Ss][Oo][Nn]
+*.[Mm][Dd]
+*.[Mm][Dd][Xx]
+!/README.md

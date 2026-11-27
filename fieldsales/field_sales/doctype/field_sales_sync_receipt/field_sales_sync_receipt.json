@@ -1,0 +1,75 @@
+{
+ "doctype": "DocType",
+ "name": "Field Sales Sync Receipt",
+ "module": "Field Sales",
+ "engine": "InnoDB",
+ "autoname": "field:mutation_id",
+ "track_changes": 1,
+ "field_order": [
+  "mutation_id",
+  "fingerprint",
+  "actor",
+  "company",
+  "territory",
+  "target_type",
+  "target_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "mutation_id",
+   "fieldtype": "Data",
+   "label": "Mutation ID",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "fingerprint",
+   "fieldtype": "Data",
+   "label": "Payload fingerprint",
+   "reqd": 1
+  },
+  {
+   "fieldname": "actor",
+   "fieldtype": "Link",
+   "label": "Submitting user",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "territory",
+   "fieldtype": "Link",
+   "label": "Territory",
+   "options": "Territory",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "target_type",
+   "fieldtype": "Link",
+   "label": "Target type",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "target_name",
+   "fieldtype": "Data",
+   "label": "Target name",
+   "reqd": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}

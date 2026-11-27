@@ -1,0 +1,190 @@
+{
+ "doctype": "DocType",
+ "name": "Field Sales Customer Intake",
+ "module": "Field Sales",
+ "engine": "InnoDB",
+ "autoname": "field:external_id",
+ "title_field": "customer_name",
+ "track_changes": 1,
+ "field_order": [
+  "external_id",
+  "company",
+  "territory",
+  "captured_at_utc",
+  "customer_name",
+  "channel",
+  "outlet_name",
+  "contact_name",
+  "phone",
+  "landmark",
+  "location_status",
+  "latitude",
+  "longitude",
+  "accuracy_m",
+  "location_reason",
+  "review_status",
+  "linked_customer",
+  "linked_address",
+  "review_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "label": "External ID",
+   "reqd": 1,
+   "unique": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "territory",
+   "fieldtype": "Link",
+   "label": "Territory",
+   "options": "Territory",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "captured_at_utc",
+   "fieldtype": "Datetime",
+   "label": "Captured at (UTC)",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Trading name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "channel",
+   "fieldtype": "Select",
+   "label": "Sales channel",
+   "options": "Retail\nAgro-dealer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "outlet_name",
+   "fieldtype": "Data",
+   "label": "Outlet name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_name",
+   "fieldtype": "Data",
+   "label": "Contact name"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Contact phone"
+  },
+  {
+   "fieldname": "landmark",
+   "fieldtype": "Small Text",
+   "label": "Address or landmark",
+   "reqd": 1
+  },
+  {
+   "fieldname": "location_status",
+   "fieldtype": "Select",
+   "label": "Location source",
+   "options": "GPS\nUnavailable",
+   "reqd": 1
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "Latitude",
+   "precision": "7"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "Longitude",
+   "precision": "7"
+  },
+  {
+   "fieldname": "accuracy_m",
+   "fieldtype": "Float",
+   "label": "Reported accuracy (m)"
+  },
+  {
+   "fieldname": "location_reason",
+   "fieldtype": "Small Text",
+   "label": "Location exception"
+  },
+  {
+   "fieldname": "review_status",
+   "fieldtype": "Select",
+   "label": "Review status",
+   "options": "Pending Review\nLinked\nRejected",
+   "reqd": 1,
+   "default": "Pending Review",
+   "permlevel": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "linked_customer",
+   "fieldtype": "Link",
+   "label": "ERPNext customer",
+   "options": "Customer",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "linked_address",
+   "fieldtype": "Link",
+   "label": "ERPNext outlet address",
+   "options": "Address",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "review_notes",
+   "fieldtype": "Small Text",
+   "label": "Review notes",
+   "permlevel": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "Field Sales Officer",
+   "read": 1,
+   "if_owner": 1
+  },
+  {
+   "role": "Field Sales Reviewer",
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "Field Sales Reviewer",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}

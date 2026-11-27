@@ -277,3 +277,21 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+fixtures = [
+	{"dt": "Role", "filters": [["name", "in", [
+		"Field Sales Officer", "Field Sales Reviewer", "Field Sales Quality Reviewer",
+	]]]},
+]
+
+permission_query_conditions = {
+	"Field Sales Customer Intake": "fieldsales.field_sales.access.intake_query",
+	"Field Sales Visit": "fieldsales.field_sales.access.visit_query",
+	"Field Sales Complaint": "fieldsales.field_sales.access.complaint_query",
+}
+
+has_permission = {
+	"Field Sales Customer Intake": "fieldsales.field_sales.access.record_permission",
+	"Field Sales Visit": "fieldsales.field_sales.access.record_permission",
+	"Field Sales Complaint": "fieldsales.field_sales.access.record_permission",
+}

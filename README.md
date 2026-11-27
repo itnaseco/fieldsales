@@ -28,6 +28,18 @@ Pre-commit is configured to use the following tools for checking and formatting 
 - prettier
 - pyupgrade
 
+### Local document protection
+
+Keep architecture and design materials in the mobile workspace or another local directory.
+Enable the repository's pre-push hook after cloning:
+
+```bash
+git config --local core.hooksPath .githooks
+```
+
+The hook checks outgoing commits, including files removed by a later outgoing commit.
+The ignore rules keep these files out of normal staging.
+
 ### License
 
 mit

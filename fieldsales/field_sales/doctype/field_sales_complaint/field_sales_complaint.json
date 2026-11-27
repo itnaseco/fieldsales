@@ -1,0 +1,168 @@
+{
+ "doctype": "DocType",
+ "name": "Field Sales Complaint",
+ "module": "Field Sales",
+ "engine": "InnoDB",
+ "autoname": "field:external_id",
+ "title_field": "category",
+ "track_changes": 1,
+ "field_order": [
+  "external_id",
+  "company",
+  "territory",
+  "captured_at_utc",
+  "customer",
+  "outlet",
+  "customer_intake",
+  "category",
+  "reporter_name",
+  "reporter_phone",
+  "dealer_reference",
+  "batch_reference",
+  "description",
+  "review_status",
+  "support_issue",
+  "review_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "external_id",
+   "fieldtype": "Data",
+   "label": "External ID",
+   "reqd": 1,
+   "unique": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "territory",
+   "fieldtype": "Link",
+   "label": "Territory",
+   "options": "Territory",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "captured_at_utc",
+   "fieldtype": "Datetime",
+   "label": "Captured at (UTC)",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "outlet",
+   "fieldtype": "Link",
+   "label": "Outlet address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "customer_intake",
+   "fieldtype": "Link",
+   "label": "Customer intake",
+   "options": "Field Sales Customer Intake"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Complaint category",
+   "options": "Weevil Infestation\nPoor Germination\nDamaged Packaging\nIncorrect Label\nService or Delivery\nOther",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reporter_name",
+   "fieldtype": "Data",
+   "label": "Reporter name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reporter_phone",
+   "fieldtype": "Data",
+   "label": "Reporter phone"
+  },
+  {
+   "fieldname": "dealer_reference",
+   "fieldtype": "Data",
+   "label": "Dealer or receipt reference"
+  },
+  {
+   "fieldname": "batch_reference",
+   "fieldtype": "Data",
+   "label": "Batch or lot as reported"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "What the reporter observed",
+   "reqd": 1
+  },
+  {
+   "fieldname": "review_status",
+   "fieldtype": "Select",
+   "label": "Review status",
+   "options": "Pending Review\nIn Review\nResolved\nRejected",
+   "reqd": 1,
+   "default": "Pending Review",
+   "permlevel": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "support_issue",
+   "fieldtype": "Link",
+   "label": "Support Issue",
+   "options": "Issue",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "review_notes",
+   "fieldtype": "Small Text",
+   "label": "Review notes",
+   "permlevel": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "Field Sales Officer",
+   "read": 1,
+   "if_owner": 1
+  },
+  {
+   "role": "Field Sales Quality Reviewer",
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "Field Sales Quality Reviewer",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1
+  },
+  {
+   "role": "System Manager",
+   "permlevel": 1,
+   "read": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC"
+}

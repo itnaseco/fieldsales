@@ -1,0 +1,23 @@
+[
+ {
+  "doctype": "Role",
+  "name": "Field Sales Officer",
+  "role_name": "Field Sales Officer",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "name": "Field Sales Reviewer",
+  "role_name": "Field Sales Reviewer",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "doctype": "Role",
+  "name": "Field Sales Quality Reviewer",
+  "role_name": "Field Sales Quality Reviewer",
+  "desk_access": 1,
+  "disabled": 0
+ }
+]

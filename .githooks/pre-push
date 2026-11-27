@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+import subprocess
+import sys
+from pathlib import PurePosixPath
+
+
+REPOSITORY_FILES = {
+    ".editorconfig", ".eslintrc", ".gitignore", ".pre-commit-config.yaml",
+    ".githooks/pre-push", "license.txt", "pyproject.toml", "README.md",
+}
+FRAMEWORK_FILES = {
+    "fieldsales/modules.txt", "fieldsales/patches.txt", "fieldsales/requirements.txt",
+}
+SOURCE_SUFFIXES = {
+    ".py", ".json", ".js", ".ts", ".jsx", ".tsx", ".vue", ".css", ".scss",
+    ".html", ".jinja", ".jinja2", ".j2", ".csv", ".po",
+}
+PUBLIC_ASSET_SUFFIXES = {
+    ".svg", ".png", ".jpg", ".jpeg", ".webp", ".gif", ".ico", ".woff", ".woff2",
+}
+LOCAL_DIRECTORIES = {
+    ".agents", ".claude", ".codex", ".cursor", ".github", "architecture",
+    "design", "docs", "openspec", "skills", "node_modules", "build", "dist",
+    "venv", "__pycache__",
+}
+
+
+def git(*args, input=None):
+    return subprocess.check_output(["git", *args], input=input)
+
+
+def allowed(raw_path, mode):
+    if mode not in {b"100644", b"100755"}:
+        return False
+    path = PurePosixPath(raw_path.decode("utf-8", errors="surrogateescape"))
+    if path.as_posix() in REPOSITORY_FILES or path.as_posix() in FRAMEWORK_FILES:
+        return True
+    if path.parts[0] != "fieldsales" or len(path.parts) < 2:
+        return False
+    directories = {part.lower() for part in path.parts[1:-1]}
+    if directories & LOCAL_DIRECTORIES:
+        return False
+    if path.name.lower() in {"skills-lock.json", "skill.json"}:
+        return False
+    if path.name in {".frappe", ".gitkeep"} or path.suffix.lower() in SOURCE_SUFFIXES:
+        return True
+    return path.parts[1] == "public" and path.suffix.lower() in PUBLIC_ASSET_SUFFIXES
+
+
+def outgoing_files(local_oid, remote_oid):
+    local_commit = git("rev-parse", "--verify", f"{local_oid}^{{commit}}").strip().decode()
+    revisions = [local_commit]
+    if remote_oid.strip("0"):
+        result = subprocess.run(
+            ["git", "rev-parse", "--quiet", "--verify", f"{remote_oid}^{{commit}}"],
+            capture_output=True, text=True,
+        )
+        if result.returncode == 0:
+            revisions.append("^" + result.stdout.strip())
+    commits = git("rev-list", *revisions)
+    if not commits:
+        return []
+    changes = git(
+        "diff-tree", "--stdin", "--root", "-m", "-r", "--raw", "--no-renames",
+        "--no-commit-id", "--diff-filter=AMT", "-z", input=commits,
+    )
+    entries = iter(changes.rstrip(b"\0").split(b"\0")) if changes else iter(())
+    return [(name, metadata.split()[1]) for metadata, name in zip(entries, entries, strict=True)]
+
+
+def main():
+    for update in sys.stdin:
+        local_ref, local_oid, _, remote_oid = update.split()
+        if not local_oid.strip("0"):
+            continue
+        blocked = {path for path, mode in outgoing_files(local_oid, remote_oid) if not allowed(path, mode)}
+        if blocked:
+            print(f"Push blocked for {local_ref}. Only FieldSales app files may be pushed:", file=sys.stderr)
+            for path in sorted(blocked):
+                print(f"  {path.decode('utf-8', errors='replace')}", file=sys.stderr)
+            return 1
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
